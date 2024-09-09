@@ -8,7 +8,7 @@ import Register from "./pages/register/Register";
 import { createBrowserRouter, Navigate, Outlet, RouterProvider } from "react-router-dom";
 
 function App() {
-  const currentUser = false;
+  const currentUser = true;
 
   const ProtectedRoute = ({children}) => {
     if (!currentUser) {
