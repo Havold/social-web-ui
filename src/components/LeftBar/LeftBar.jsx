@@ -80,6 +80,22 @@ const LeftBar = () => {
             <LocalLibraryRounded className="icon" />
             <span>Courses</span>
           </div>
+          <div className="item">
+            <LocalLibraryRounded className="icon" />
+            <span>Courses</span>
+          </div>
+          <div className="item">
+            <LocalLibraryRounded className="icon" />
+            <span>Courses</span>
+          </div>
+          <div className="item">
+            <LocalLibraryRounded className="icon" />
+            <span>Courses</span>
+          </div>
+          <div className="item">
+            <LocalLibraryRounded className="icon" />
+            <span>Courses</span>
+          </div>
         </div>
       </div>
     </div>

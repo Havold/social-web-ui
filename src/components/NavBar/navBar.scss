@@ -3,9 +3,13 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    background-color: white;
     box-shadow: 3px 2px 26px 3px rgba(101,101,101,0.3);
     -webkit-box-shadow: 3px 2px 26px 3px rgba(101,101,101,0.3);
     -moz-box-shadow: 3px 2px 26px 3px rgba(101,101,101,0.3);
+    position: sticky;
+    top: 0;
+    
 
     .left {
         display: flex;
