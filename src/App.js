@@ -20,7 +20,7 @@ function App() {
 
   const Layout = () => {
     return (
-      <div className="layout">
+      <div style={{backgroundColor: '#F5F3F3'}}>
         <NavBar />
         <div style={{display: 'flex'}}>
           <LeftBar />

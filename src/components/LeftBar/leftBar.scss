@@ -1,9 +1,10 @@
 .leftBar {
     flex: 2;
     position: sticky;
-    top: 64px;
-    height: calc(100vh - 64px);
+    top: 66px;
+    height: calc(100vh - 66px);
     overflow: scroll;
+    background-color: white;
     
     &::-webkit-scrollbar {
         width: 0px;

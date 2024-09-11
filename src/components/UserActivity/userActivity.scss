@@ -1,0 +1,31 @@
+.userActivity {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 16px;
+    font-size: 1.4rem;
+
+    
+    &:hover {
+        cursor: pointer;
+        background-color: rgba(225, 223, 223, 0.162);
+    }
+
+    .left {
+        display: flex;
+        align-items: center;
+        gap: 4px;
+
+        .activity {
+            color: #333;
+        }
+    }
+
+    .right {
+        span {
+            color: #33333382;
+        }
+    }
+    
+
+}

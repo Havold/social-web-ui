@@ -1,0 +1,35 @@
+.suggestedUser {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 16px;
+    
+    &:hover {
+        cursor: pointer;
+        background-color: rgba(225, 223, 223, 0.162);
+    }
+
+    .actions {
+        display: flex;
+        gap: 10px;
+        
+        button {
+            font-size: 1.2rem;
+            cursor: pointer;
+            color: white;
+            border-radius: 4px;
+            padding: 8px;
+            
+            &:hover {
+                opacity: 0.8;
+            }
+
+            &.follow {
+                background-color: var(--primary);
+            }
+
+            &.dismiss {
+                background-color: #EF5351;
+            }
+        }
+    }
+}
