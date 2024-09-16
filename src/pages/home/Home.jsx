@@ -1,75 +1,12 @@
+import Posts from '../../components/Posts/Posts';
+import Stories from '../../components/Stories/Stories';
 import './home.scss';
 
 const Home = () => {
     return (
         <div className="home">
-            <div>Home</div>
-            <div>Home</div>
-            <div>Home</div>
-            <div>Home</div>
-            <div>Home</div>
-            <div>Home</div>
-            <div>Home</div>
-            <div>Home</div>
-            <div>Home</div>
-            <div>Home</div>
-            <div>Home</div>
-            <div>Home</div>
-            <div>Home</div>
-            <div>Home</div>
-            <div>Home</div>
-            <div>Home</div>
-            <div>Home</div>
-            <div>Home</div>
-            <div>Home</div>
-            <div>Home</div>
-            <div>Home</div>
-            <div>Home</div>
-            <div>Home</div>
-            <div>Home</div>
-            <div>Home</div>
-            <div>Home</div>
-            <div>Home</div>
-            <div>Home</div>
-            <div>Home</div>
-            <div>Home</div>
-            <div>Home</div>
-            <div>Home</div>
-            <div>Home</div>
-            <div>Home</div>
-            <div>Home</div>
-            <div>Home</div>
-            <div>Home</div>
-            <div>Home</div>
-            <div>Home</div>
-            <div>Home</div>
-            <div>Home</div>
-            <div>Home</div>
-            <div>Home</div>
-            <div>Home</div>
-            <div>Home</div>
-            <div>Home</div>
-            <div>Home</div>
-            <div>Home</div>
-            <div>Home</div>
-            <div>Home</div>
-            <div>Home</div>
-            <div>Home</div>
-            <div>Home</div>
-            <div>Home</div>
-            <div>Home</div>
-            <div>Home</div>
-            <div>Home</div>
-            <div>Home</div>
-            <div>Home</div>
-            <div>Home</div>
-            <div>Home</div>
-            <div>Home</div>
-            <div>Home</div>
-            <div>Home</div>
-            <div>Home</div>
-            <div>Home</div>
-            <div>Home</div>
+            <Stories />
+            <Posts />
         </div>
     );
 };
