@@ -3,8 +3,8 @@ import { createContext, useEffect, useState } from 'react';
 export const DarkModeContext = createContext();
 
 export const DarkModeContextProvider = ({ children }) => {
-    // Lấy thông tin darkMode từ localStorage
-    const [darkMode, setDarkMode] = useState(localStorage.getItem('darkMode') || false);
+    // Lấy thông tin darkMode từ localStorage (LƯU Ý KIỂU DỮ LIỆU LÀ STRING NÊN PHẢI JSON.PARSERs)
+    const [darkMode, setDarkMode] = useState(JSON.parse(localStorage.getItem('darkMode')) || false);
 
     // Hàm để chuyển mode
     const toggle = () => {
