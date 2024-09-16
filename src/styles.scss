@@ -1,0 +1,64 @@
+.theme-light {
+    --textColor: black;
+    --bg: white;
+    --logo: var(--primary);
+    --bgSoft: #f6f3f3;
+    --textColorSoft: #33333382;
+    --border: lightgray;
+}
+
+.theme-dark {
+    --textColor: whitesmoke;
+    --bg: #1f2123;
+    --logo: white;
+    --bgSoft: #333333;
+    --textColorSoft: #f6f3f37c;
+    --border: #444;
+}
+
+// CÁCH DÙNG CODE PHỨC TẠP HƠN
+// $themes: (
+//         light: (
+//             textColor: black,
+//             bg: white,
+//             logo: #5f27bf,
+//             bgSoft: #f6f3f3,
+//             textColorSoft: #33333382,
+//             border: lightgray,
+//         ),
+
+//         dark:
+//         (
+//             textColor: whitesmoke,
+//             bg: black,
+//             logo: white,
+//             bgSoft: #33333382,
+//             textColorSoft: #f6f3f3,
+//             border: #444,
+//         ),
+// );
+
+// @mixin themify($themes) {
+//     @each $theme, $map in $themes {
+//         .theme-#{$theme} & {
+//             $theme-map: () !global;
+//             @each $key, $submap in $map {
+//                 $value: map-get(map-get($themes, $theme), $key );
+//                 $theme-map: map-merge(
+//                     $theme-map,
+//                     (
+//                         $key: $value,
+//                     )
+//                 ) !global;
+//             }
+
+//             @content;
+
+//             $theme-map: null !global;
+//         }
+//     }
+// }
+
+// @function themed($key) {
+//     @return map-get($theme-map, $key);
+// }

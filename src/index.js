@@ -1,15 +1,18 @@
-import React from "react";
-import ReactDOM from "react-dom/client";
-import App from "./App";
-import GlobalStyles from "./components/GlobalStyles";
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import App from './App';
+import GlobalStyles from './components/GlobalStyles';
+import { DarkModeContextProvider } from './context/DarkModeContext';
 
-const root = ReactDOM.createRoot(document.getElementById("root"));
+const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <React.StrictMode>
-    <GlobalStyles>
-      <App />
-    </GlobalStyles>
-  </React.StrictMode>
+    <React.StrictMode>
+        <DarkModeContextProvider>
+            <GlobalStyles>
+                <App />
+            </GlobalStyles>
+        </DarkModeContextProvider>
+    </React.StrictMode>,
 );
 
 // If you want to start measuring performance in your app, pass a function
