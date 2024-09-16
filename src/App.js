@@ -9,9 +9,10 @@ import { createBrowserRouter, Navigate, Outlet, RouterProvider } from 'react-rou
 import './styles.scss';
 import { useContext } from 'react';
 import { DarkModeContext } from './context/DarkModeContext';
+import { UserContext } from './context/UserContext';
 
 function App() {
-    const currentUser = true;
+    const { currentUser } = useContext(UserContext);
     const { darkMode } = useContext(DarkModeContext);
 
     const ProtectedRoute = ({ children }) => {
