@@ -9,11 +9,11 @@ import {
 import { Link } from 'react-router-dom';
 import Search from '../Search/Search';
 import { useContext } from 'react';
-import { DarkModeContext } from '../../context/DarkModeContext';
-import { UserContext } from '../../context/UserContext';
+import { AuthContext } from '../../context/authContext';
+import { DarkModeContext } from '../../context/darkModeContext';
 
 const NavBar = () => {
-    const { currentUser } = useContext(UserContext);
+    const { currentUser } = useContext(AuthContext);
     const { darkMode, toggle } = useContext(DarkModeContext);
     return (
         <div className="navBar">

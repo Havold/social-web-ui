@@ -1,8 +1,8 @@
 import { createContext, useEffect, useState } from 'react';
 
-export const UserContext = createContext();
+export const AuthContext = createContext();
 
-export const UserContextProvider = ({ children }) => {
+export const AuthContextProvider = ({ children }) => {
     // Lấy thông tin user từ localStorage
     const [currentUser, setCurrentUser] = useState(JSON.parse(localStorage.getItem('user')) || null);
 
@@ -18,5 +18,5 @@ export const UserContextProvider = ({ children }) => {
         localStorage.setItem('user', JSON.stringify(currentUser));
     }, [currentUser]);
 
-    return <UserContext.Provider value={{ login, currentUser }}>{children}</UserContext.Provider>;
+    return <AuthContext.Provider value={{ login, currentUser }}>{children}</AuthContext.Provider>;
 };

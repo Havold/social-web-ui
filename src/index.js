@@ -2,18 +2,18 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App';
 import GlobalStyles from './components/GlobalStyles';
-import { DarkModeContextProvider } from './context/DarkModeContext';
-import { UserContextProvider } from './context/UserContext';
+import { AuthContextProvider } from './context/authContext';
+import { DarkModeContextProvider } from './context/darkModeContext';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
     <React.StrictMode>
         <DarkModeContextProvider>
-            <UserContextProvider>
+            <AuthContextProvider>
                 <GlobalStyles>
                     <App />
                 </GlobalStyles>
-            </UserContextProvider>
+            </AuthContextProvider>
         </DarkModeContextProvider>
     </React.StrictMode>,
 );

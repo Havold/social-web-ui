@@ -8,11 +8,11 @@ import Register from './pages/register/Register';
 import { createBrowserRouter, Navigate, Outlet, RouterProvider } from 'react-router-dom';
 import './styles.scss';
 import { useContext } from 'react';
-import { DarkModeContext } from './context/DarkModeContext';
-import { UserContext } from './context/UserContext';
+import { DarkModeContext } from './context/darkModeContext';
+import { AuthContext } from './context/authContext';
 
 function App() {
-    const { currentUser } = useContext(UserContext);
+    const { currentUser } = useContext(AuthContext);
     const { darkMode } = useContext(DarkModeContext);
 
     const ProtectedRoute = ({ children }) => {
