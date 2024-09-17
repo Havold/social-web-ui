@@ -5,7 +5,7 @@
     height: calc(100vh - 65px);
     overflow: scroll;
     background-color: var(--bg);
-    
+
     &::-webkit-scrollbar {
         width: 0px;
     }
@@ -32,7 +32,7 @@
                     font-size: 2rem;
                     color: var(--logo);
                 }
-                
+
                 span {
                     font-size: 1.4rem;
                     color: var(--logo);
@@ -64,6 +64,6 @@
     }
 
     &::-webkit-scrollbar-track {
-        background-color: var(--primary-hover)/* Màu nền của track thanh cuộn */
+        background-color: var(--primary-hover); /* Màu nền của track thanh cuộn */
     }
 }
