@@ -7,13 +7,11 @@ import {
 } from '@mui/icons-material';
 import './post.scss';
 import { useState } from 'react';
+import Comments from '../Comments/Comments';
 
 const Post = ({ post }) => {
     const [liked, setLiked] = useState(false);
-
-    const handleClickLike = () => {
-        setLiked(!liked);
-    };
+    const [commentsOpen, setCommentsOpen] = useState(false);
 
     return (
         <div className="post">
@@ -36,13 +34,13 @@ const Post = ({ post }) => {
             <div className="info">
                 <div className="item">
                     {liked ? (
-                        <FavoriteRounded onClick={handleClickLike} className="icon" />
+                        <FavoriteRounded onClick={() => setLiked(!liked)} className="icon" />
                     ) : (
-                        <FavoriteBorderRounded onClick={handleClickLike} className="icon" />
+                        <FavoriteBorderRounded onClick={() => setLiked(!liked)} className="icon" />
                     )}
                     <span>24 Likes</span>
                 </div>
-                <div className="item">
+                <div className="item" onClick={() => setCommentsOpen(!commentsOpen)}>
                     <CommentRounded className="icon" />
                     <span>24 Comments</span>
                 </div>
@@ -51,6 +49,7 @@ const Post = ({ post }) => {
                     <span>Share</span>
                 </div>
             </div>
+            {commentsOpen && <Comments />}
         </div>
     );
 };
