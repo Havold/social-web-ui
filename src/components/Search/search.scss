@@ -1,3 +1,5 @@
+@import './../../styles.scss';
+
 .search {
     display: flex;
     align-items: center;
@@ -6,6 +8,11 @@
     padding: 4px 12px;
     width: 400px;
     border-radius: 4px;
+
+    @include mobile {
+        border: none;
+        width: inherit;
+    }
 
     .icon {
         font-size: 2.4rem;
@@ -20,5 +27,9 @@
         outline: none;
         caret-color: var(--primary);
         background-color: transparent;
+
+        @include mobile {
+            display: none;
+        }
     }
 }
