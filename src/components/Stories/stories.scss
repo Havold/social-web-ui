@@ -74,6 +74,10 @@
                     color: white;
                     text-align: center;
                     font-weight: 600;
+
+                    @include mobile {
+                        display: none;
+                    }
                 }
             }
         }
