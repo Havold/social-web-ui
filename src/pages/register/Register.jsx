@@ -21,8 +21,8 @@ const Register = () => {
     const handleClick = async () => {
         try {
             await axios.post('http://localhost:8080/api/auth/register', inputs);
-        } catch (error) {
-            setErr(error);
+        } catch (err) {
+            setErr(err);
         }
     };
 
@@ -49,6 +49,7 @@ const Register = () => {
                         <input type="text" placeholder="Name" name="name" onChange={handleChange} />
                     </form>
                     <button onClick={handleClick}>Register</button>
+                    {err && <span>{err.response.data}</span>}
                 </div>
             </div>
         </div>

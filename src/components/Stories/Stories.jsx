@@ -27,7 +27,7 @@ function Stories() {
     return (
         <div className="stories">
             <div className="story">
-                <img src={currentUser.avatar} alt="thumbnail" className="thumbnail" />
+                <img src={currentUser.profilePic} alt="thumbnail" className="thumbnail" />
                 <div className="createContainer">
                     <div className="create">
                         <button>+</button>

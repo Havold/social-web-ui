@@ -23,7 +23,7 @@ const Comments = () => {
     return (
         <div className="comments">
             <div className="write">
-                <img src={currentUser.avatar} alt="avatar" />
+                <img src={currentUser.profilePic} alt="avatar" />
                 <input type="text" placeholder="Write a comment..." />
                 <button>Send</button>
             </div>
