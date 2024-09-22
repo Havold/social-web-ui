@@ -13,8 +13,7 @@ const Share = () => {
 
     const mutation = useMutation({
         mutationFn: (newPost) => {
-            makeRequest.post('/posts', newPost);
-            setDesc('');
+            return makeRequest.post('/posts', newPost);
         },
         onSuccess: () => {
             // Invalidate and refetch
@@ -24,6 +23,7 @@ const Share = () => {
 
     const handleClick = () => {
         mutation.mutate({ desc });
+        setDesc('');
     };
 
     return (
