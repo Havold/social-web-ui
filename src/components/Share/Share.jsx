@@ -2,9 +2,11 @@ import { useContext } from 'react';
 import './share.scss';
 import { AuthContext } from '../../context/authContext';
 import { InsertPhotoRounded, AddLocationRounded, LoyaltyRounded } from '@mui/icons-material';
+import { useQuery } from '@tanstack/react-query';
 
 const Share = () => {
     const { currentUser } = useContext(AuthContext);
+
     return (
         <div className="share">
             <div className="top">

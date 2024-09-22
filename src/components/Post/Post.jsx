@@ -17,7 +17,7 @@ const Post = ({ post }) => {
         <div className="post">
             <div className="user">
                 <div className="left">
-                    <img src={post.avatar} alt="avatar" />
+                    <img src={post.profilePic} alt="avatar" />
                     <div className="userInfo">
                         <span className="name">{post.name}</span>
                         <span className="date">1 min ago</span>

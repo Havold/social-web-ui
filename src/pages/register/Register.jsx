@@ -21,6 +21,12 @@ const Register = () => {
     const handleClick = async () => {
         try {
             await axios.post('http://localhost:8080/api/auth/register', inputs);
+            setInputs({
+                username: '',
+                email: '',
+                password: '',
+                name: '',
+            });
         } catch (err) {
             setErr(err);
         }
@@ -43,10 +49,28 @@ const Register = () => {
                 <div className="right">
                     <h2>Register</h2>
                     <form>
-                        <input type="text" placeholder="Username" name="username" onChange={handleChange} />
-                        <input type="email" placeholder="Email" name="email" onChange={handleChange} />
-                        <input type="password" placeholder="Password" name="password" onChange={handleChange} />
-                        <input type="text" placeholder="Name" name="name" onChange={handleChange} />
+                        <input
+                            value={inputs.username}
+                            type="text"
+                            placeholder="Username"
+                            name="username"
+                            onChange={handleChange}
+                        />
+                        <input
+                            value={inputs.email}
+                            type="email"
+                            placeholder="Email"
+                            name="email"
+                            onChange={handleChange}
+                        />
+                        <input
+                            value={inputs.password}
+                            type="password"
+                            placeholder="Password"
+                            name="password"
+                            onChange={handleChange}
+                        />
+                        <input value={inputs.name} type="text" placeholder="Name" name="name" onChange={handleChange} />
                     </form>
                     <button onClick={handleClick}>Register</button>
                     {err && <span>{err.response.data}</span>}
