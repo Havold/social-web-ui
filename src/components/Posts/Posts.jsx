@@ -12,15 +12,13 @@ function Posts() {
             }),
     });
 
-    console.log(data);
-
     return (
         <div className="posts">
             {error
                 ? 'Something went wrong!'
                 : isPending
                 ? 'Loading...'
-                : data.map((post) => <Post post={post} key={post.id} />)}
+                : data.map((post, index) => <Post post={post} key={index} />)}
         </div>
     );
 }

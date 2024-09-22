@@ -20,7 +20,7 @@ const Post = ({ post }) => {
                     <img src={post.profilePic} alt="avatar" />
                     <div className="userInfo">
                         <span className="name">{post.name}</span>
-                        <span className="date">1 min ago</span>
+                        <span className="date">{post.createdAt}</span>
                     </div>
                 </div>
                 <div className="right">
@@ -29,7 +29,7 @@ const Post = ({ post }) => {
             </div>
             <div className="content">
                 <p>{post.desc}</p>
-                <img src={post.img} alt="image_description" />
+                {post.img ? <img src={post.img} alt="image_description" /> : <></>}
             </div>
             <div className="info">
                 <div className="item">
