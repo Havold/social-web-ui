@@ -4,9 +4,12 @@ import { AuthContext } from '../../context/authContext';
 import { useQuery } from '@tanstack/react-query';
 import { makeRequest } from '../../axios';
 import moment from 'moment';
+import { useMutation, useQueryClient } from '@tanstack/react-query';
 
 const Comments = ({ postId }) => {
     const { currentUser } = useContext(AuthContext);
+    const [desc, setDesc] = useState('');
+    const queryClient = useQueryClient();
     // const comments = [
     //     {
     //         id: 1,
@@ -33,14 +36,31 @@ const Comments = ({ postId }) => {
         },
     });
 
-    console.log(data);
+    const mutation = useMutation({
+        mutationFn: (newComment) => {
+            return makeRequest.post('/comments/' + postId, newComment);
+        },
+        onSuccess: () => {
+            queryClient.invalidateQueries({ queryKey: ['comments'] });
+        },
+    });
+
+    const handleSendComment = () => {
+        mutation.mutate({ desc });
+        setDesc('');
+    };
 
     return (
         <div className="comments">
             <div className="write">
                 <img src={currentUser.profilePic} alt="avatar" />
-                <input type="text" placeholder="Write a comment..." />
-                <button>Send</button>
+                <input
+                    value={desc}
+                    type="text"
+                    placeholder="Write a comment..."
+                    onChange={(e) => setDesc(e.target.value)}
+                />
+                <button onClick={handleSendComment}>Send</button>
             </div>
             {error
                 ? 'Something went wrong! '
@@ -53,7 +73,7 @@ const Comments = ({ postId }) => {
                               <span>{comment.name}</span>
                               <p>{comment.desc}</p>
                           </div>
-                          <div className="date">{moment(comment.createdAt).fromNow}</div>
+                          <div className="date">{moment(comment.createdAt).fromNow()}</div>
                       </div>
                   ))}
         </div>
