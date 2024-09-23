@@ -6,16 +6,17 @@ import {
     ShareRounded,
 } from '@mui/icons-material';
 import './post.scss';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import Comments from '../Comments/Comments';
 import moment from 'moment';
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import { makeRequest } from '../../axios';
+import { AuthContext } from '../../context/authContext';
 
 const Post = ({ post }) => {
-    const [liked, setLiked] = useState(false);
     const [commentsOpen, setCommentsOpen] = useState(false);
     const queryClient = useQueryClient();
+    const { currentUser } = useContext(AuthContext);
 
     const {
         isPending: isPendingComments,
@@ -37,24 +38,18 @@ const Post = ({ post }) => {
     } = useQuery({
         queryKey: ['countLikes', post.id],
         queryFn: () => {
-            return makeRequest.get('/likes/' + post.id).then((res) => {
+            return makeRequest.get('/likes?postId=' + post.id).then((res) => {
                 return res.data;
             });
         },
     });
 
     const mutationLike = useMutation({
-        mutationFn: () => {
-            return makeRequest.post('/likes/' + post.id);
-        },
-        onSuccess: () => {
-            queryClient.invalidateQueries({ queryKey: ['countLikes', post.id] });
-        },
-    });
-
-    const mutationDislike = useMutation({
-        mutationFn: () => {
-            return makeRequest.delete('/likes/' + post.id);
+        mutationFn: (liked) => {
+            if (liked) {
+                return makeRequest.delete('/likes?postId=' + post.id);
+            }
+            return makeRequest.post('/likes?postId=' + post.id);
         },
         onSuccess: () => {
             queryClient.invalidateQueries({ queryKey: ['countLikes', post.id] });
@@ -62,13 +57,7 @@ const Post = ({ post }) => {
     });
 
     const handleLike = () => {
-        setLiked(!liked);
-        mutationLike.mutate();
-    };
-
-    const handleDislike = () => {
-        setLiked(!liked);
-        mutationDislike.mutate();
+        mutationLike.mutate(dataLikes.includes(currentUser.id));
     };
 
     return (
@@ -91,8 +80,10 @@ const Post = ({ post }) => {
             </div>
             <div className="info">
                 <div className="item">
-                    {liked ? (
-                        <FavoriteRounded style={{ color: 'red' }} onClick={handleDislike} className="icon" />
+                    {isPendingLikes ? (
+                        <></>
+                    ) : dataLikes.includes(currentUser.id) ? (
+                        <FavoriteRounded style={{ color: 'red' }} onClick={handleLike} className="icon" />
                     ) : (
                         <FavoriteBorderRounded onClick={handleLike} className="icon" />
                     )}
