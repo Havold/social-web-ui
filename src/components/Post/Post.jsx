@@ -8,6 +8,7 @@ import {
 import './post.scss';
 import { useState } from 'react';
 import Comments from '../Comments/Comments';
+import moment from 'moment';
 
 const Post = ({ post }) => {
     const [liked, setLiked] = useState(false);
@@ -20,7 +21,7 @@ const Post = ({ post }) => {
                     <img src={post.profilePic} alt="avatar" />
                     <div className="userInfo">
                         <span className="name">{post.name}</span>
-                        <span className="date">{post.createdAt}</span>
+                        <span className="date">{moment(post.createdAt).fromNow()}</span>
                     </div>
                 </div>
                 <div className="right">
@@ -29,7 +30,7 @@ const Post = ({ post }) => {
             </div>
             <div className="content">
                 <p>{post.desc}</p>
-                {post.img ? <img src={post.img} alt="image_description" /> : <></>}
+                {post.img ? <img src={'./upload/' + post.img} alt="image_description" /> : <></>}
             </div>
             <div className="info">
                 <div className="item">

@@ -20,6 +20,7 @@
         }
 
         textarea {
+            flex: 6;
             width: 100%;
             height: 100%;
             resize: none;
@@ -52,6 +53,31 @@
                 &::-webkit-scrollbar-track {
                     background-color: var(--primary-hover); /* Màu nền của track thanh cuộn */
                 }
+            }
+        }
+
+        .imgUploadContainer {
+            flex: 1;
+            height: 100%;
+            position: relative;
+
+            .imgUpload {
+                width: 100%;
+                height: 100%;
+                border-radius: 0;
+                align-self: center;
+            }
+
+            .closeIcon {
+                position: absolute;
+                padding: 4px;
+                top: 4px;
+                right: 4px;
+                color: white;
+                font-size: 20px;
+                cursor: pointer;
+                background-color: var(--primary);
+                border-radius: 50%;
             }
         }
     }
