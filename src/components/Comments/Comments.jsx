@@ -42,6 +42,7 @@ const Comments = ({ postId }) => {
         },
         onSuccess: () => {
             queryClient.invalidateQueries({ queryKey: ['comments'] });
+            queryClient.invalidateQueries({ queryKey: ['countComments', postId] });
         },
     });
 
