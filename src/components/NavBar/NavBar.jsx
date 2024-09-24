@@ -32,10 +32,12 @@ const NavBar = () => {
             <div className="right">
                 <MailOutlineOutlined className="icon" />
                 <NotificationsNoneOutlined className="icon" />
-                <div className="user">
-                    <img className="avatar" src={currentUser.profilePic} alt="avatar" />
-                    <span>{currentUser.name}</span>
-                </div>
+                <Link to={`/profile/${currentUser.id}`}>
+                    <div className="user">
+                        <img className="avatar" src={currentUser.profilePic} alt="avatar" />
+                        <span>{currentUser.name}</span>
+                    </div>
+                </Link>
             </div>
         </div>
     );

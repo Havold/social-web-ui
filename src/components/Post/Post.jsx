@@ -12,6 +12,7 @@ import moment from 'moment';
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import { makeRequest } from '../../axios';
 import { AuthContext } from '../../context/authContext';
+import { Link } from 'react-router-dom';
 
 const Post = ({ post }) => {
     const [commentsOpen, setCommentsOpen] = useState(false);
@@ -21,7 +22,7 @@ const Post = ({ post }) => {
     const {
         isPending: isPendingComments,
         error: errorComments,
-        data: dataComments,
+        data: commentsData,
     } = useQuery({
         queryKey: ['countComments', post.id],
         queryFn: () => {
@@ -34,7 +35,7 @@ const Post = ({ post }) => {
     const {
         isPending: isPendingLikes,
         error: errorLikes,
-        data: dataLikes,
+        data: likesData,
     } = useQuery({
         queryKey: ['countLikes', post.id],
         queryFn: () => {
@@ -57,19 +58,21 @@ const Post = ({ post }) => {
     });
 
     const handleLike = () => {
-        mutationLike.mutate(dataLikes.includes(currentUser.id));
+        mutationLike.mutate(likesData.includes(currentUser.id));
     };
 
     return (
         <div className="post">
             <div className="user">
-                <div className="left">
-                    <img src={post.profilePic} alt="avatar" />
-                    <div className="userInfo">
-                        <span className="name">{post.name}</span>
-                        <span className="date">{moment(post.createdAt).fromNow()}</span>
+                <Link to={`/profile/${post.userId}`}>
+                    <div className="left">
+                        <img src={post.profilePic} alt="avatar" />
+                        <div className="userInfo">
+                            <span className="name">{post.name}</span>
+                            <span className="date">{moment(post.createdAt).fromNow()}</span>
+                        </div>
                     </div>
-                </div>
+                </Link>
                 <div className="right">
                     <MoreVertRounded />
                 </div>
@@ -82,17 +85,17 @@ const Post = ({ post }) => {
                 <div className="item">
                     {isPendingLikes ? (
                         <></>
-                    ) : dataLikes.includes(currentUser.id) ? (
+                    ) : likesData.includes(currentUser.id) ? (
                         <FavoriteRounded style={{ color: 'red' }} onClick={handleLike} className="icon" />
                     ) : (
                         <FavoriteBorderRounded onClick={handleLike} className="icon" />
                     )}
-                    <span>{errorLikes ? 'error' : isPendingLikes ? '...' : dataLikes.length} Likes</span>
+                    <span>{errorLikes ? 'error' : isPendingLikes ? '...' : likesData.length} Likes</span>
                 </div>
                 <div className="item" onClick={() => setCommentsOpen(!commentsOpen)}>
                     <CommentRounded className="icon" />
                     <span>
-                        {errorComments ? 'error' : isPendingComments ? '...' : dataComments ? dataComments.length : 0}{' '}
+                        {errorComments ? 'error' : isPendingComments ? '...' : commentsData ? commentsData.length : 0}{' '}
                         Comments
                     </span>
                 </div>

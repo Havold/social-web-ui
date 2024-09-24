@@ -3,11 +3,11 @@ import Post from '../Post/Post';
 import './posts.scss';
 import { makeRequest } from '../../axios';
 
-function Posts() {
+function Posts({ userId }) {
     const { isPending, error, data } = useQuery({
         queryKey: ['posts'],
         queryFn: () =>
-            makeRequest.get('/posts').then((res) => {
+            makeRequest.get('/posts?userId=' + userId).then((res) => {
                 return res.data;
             }),
     });

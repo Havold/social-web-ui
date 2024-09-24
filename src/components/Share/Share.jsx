@@ -4,6 +4,7 @@ import { AuthContext } from '../../context/authContext';
 import { InsertPhotoRounded, AddLocationRounded, LoyaltyRounded, CloseRounded } from '@mui/icons-material';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { makeRequest } from '../../axios';
+import { Link } from 'react-router-dom';
 
 const Share = () => {
     const { currentUser } = useContext(AuthContext);
@@ -60,7 +61,9 @@ const Share = () => {
     return (
         <div className="share">
             <div className="top">
-                <img src={currentUser.profilePic} alt="avatar" />
+                <Link to={`/profile/${currentUser.id}`}>
+                    <img src={currentUser.profilePic} alt="avatar" />
+                </Link>
                 <textarea
                     value={desc}
                     placeholder={`What's on your mind ${currentUser.name}?`}

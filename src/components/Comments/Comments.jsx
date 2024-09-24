@@ -5,6 +5,7 @@ import { useQuery } from '@tanstack/react-query';
 import { makeRequest } from '../../axios';
 import moment from 'moment';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
+import { Link } from 'react-router-dom';
 
 const Comments = ({ postId }) => {
     const { currentUser } = useContext(AuthContext);
@@ -54,7 +55,9 @@ const Comments = ({ postId }) => {
     return (
         <div className="comments">
             <div className="write">
-                <img src={currentUser.profilePic} alt="avatar" />
+                <Link to={`/profile/${currentUser.id}`}>
+                    <img src={currentUser.profilePic} alt="avatar" />
+                </Link>
                 <input
                     value={desc}
                     type="text"
@@ -69,7 +72,9 @@ const Comments = ({ postId }) => {
                 ? 'Loading...'
                 : data.map((comment) => (
                       <div className="comment" key={comment.id}>
-                          <img src={comment.profilePic} alt="avatar" />
+                          <Link to={`/profile/${comment.userId}`}>
+                              <img src={comment.profilePic} alt="avatar" />
+                          </Link>
                           <div className="info">
                               <span>{comment.name}</span>
                               <p>{comment.desc}</p>

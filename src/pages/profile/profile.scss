@@ -58,6 +58,7 @@
                 flex: 1;
                 display: flex;
                 gap: 10px;
+                flex-wrap: wrap;
 
                 a {
                     color: var(--textColorSoft);
@@ -113,6 +114,7 @@
             .right {
                 flex: 1;
                 display: flex;
+                flex-wrap: wrap;
                 align-items: center;
                 justify-content: flex-end;
                 gap: 10px;
