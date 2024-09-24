@@ -6,10 +6,16 @@ import { makeRequest } from '../../axios';
 function Posts({ userId }) {
     const { isPending, error, data } = useQuery({
         queryKey: ['posts'],
-        queryFn: () =>
-            makeRequest.get('/posts?userId=' + userId).then((res) => {
+        queryFn: () => {
+            if (userId) {
+                return makeRequest.get('/posts?userId=' + userId).then((res) => {
+                    return res.data;
+                });
+            }
+            return makeRequest.get('/posts').then((res) => {
                 return res.data;
-            }),
+            });
+        },
     });
 
     return (

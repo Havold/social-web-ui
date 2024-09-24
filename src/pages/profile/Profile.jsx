@@ -31,7 +31,9 @@ const Profile = () => {
 
     return (
         <div className="profile">
-            {isPending ? (
+            {error ? (
+                'Something went wrong! '
+            ) : isPending ? (
                 'Loading...'
             ) : (
                 <>
@@ -74,7 +76,7 @@ const Profile = () => {
                                 <MoreVert fontSize="large" />
                             </div>
                         </div>
-                        <Posts userId={data.id} />
+                        <Posts userId={userId} />
                     </div>
                 </>
             )}
