@@ -5,6 +5,9 @@
     --bgSoft: #f6f3f3;
     --textColorSoft: #33333382;
     --border: lightgray;
+    --box-shadow-bold: rgba(0, 0, 0, 0.2);
+    --box-shadow: rgba(0, 0, 0, 0.1);
+    --box-shadow-soft: rgba(0, 0, 0, 0.05);
 }
 
 .theme-dark {
@@ -14,6 +17,9 @@
     --bgSoft: #333333;
     --textColorSoft: #f6f3f37c;
     --border: #444;
+    --box-shadow-soft: rgba(255, 255, 255, 0.2);
+    --box-shadow: rgba(255, 255, 255, 0.1);
+    --box-shadow-soft: rgba(255, 255, 255, 0.05);
 }
 
 @mixin mobile {

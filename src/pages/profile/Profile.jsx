@@ -1,4 +1,4 @@
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { AuthContext } from '../../context/authContext';
 import {
     FacebookRounded,
@@ -16,7 +16,7 @@ import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import { makeRequest } from '../../axios';
 import { useLocation } from 'react-router-dom';
 
-const Profile = () => {
+const Profile = ({ showUpdateModal, setShowUpdateModal }) => {
     const { currentUser } = useContext(AuthContext);
     const userId = parseInt(useLocation().pathname.split('/')[2]);
     const queryClient = useQueryClient();
@@ -104,7 +104,7 @@ const Profile = () => {
                                     </div>
                                 </div>
                                 {profileData.id === currentUser.id ? (
-                                    <button>Update</button>
+                                    <button onClick={() => setShowUpdateModal(!showUpdateModal)}>Update</button>
                                 ) : (
                                     <button onClick={handleFollow}>
                                         {relationshipError

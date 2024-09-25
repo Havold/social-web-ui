@@ -7,15 +7,17 @@ import Profile from './pages/profile/Profile';
 import Register from './pages/register/Register';
 import { createBrowserRouter, Navigate, Outlet, RouterProvider } from 'react-router-dom';
 import './styles.scss';
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { DarkModeContext } from './context/darkModeContext';
 import { AuthContext } from './context/authContext';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import UpdateModal from './components/UpdateModal/UpdateModal';
 
 function App() {
     const { currentUser } = useContext(AuthContext);
     const { darkMode } = useContext(DarkModeContext);
     const queryClient = new QueryClient();
+    const [showUpdateModal, setShowUpdateModal] = useState(false);
 
     const ProtectedRoute = ({ children }) => {
         if (!currentUser) {
@@ -37,6 +39,11 @@ function App() {
                         </div>
                         <RightBar />
                     </div>
+                    {showUpdateModal ? (
+                        <UpdateModal showUpdateModal={showUpdateModal} setShowUpdateModal={setShowUpdateModal} />
+                    ) : (
+                        <></>
+                    )}
                 </div>
             </QueryClientProvider>
         );
@@ -65,7 +72,7 @@ function App() {
                 },
                 {
                     path: '/profile/:id',
-                    element: <Profile />,
+                    element: <Profile showUpdateModal={showUpdateModal} setShowUpdateModal={setShowUpdateModal} />,
                 },
             ],
         },

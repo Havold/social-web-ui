@@ -6,9 +6,9 @@
     justify-content: space-between;
     align-items: center;
     background-color: var(--bg);
-    // box-shadow: 3px 2px 26px 3px rgba(101,101,101,0.3);
-    // -webkit-box-shadow: 3px 2px 26px 3px rgba(101,101,101,0.3);
-    // -moz-box-shadow: 3px 2px 26px 3px rgba(101,101,101,0.3);
+    box-shadow: 3px 2px 26px 3px var(--box-shadow-bold);
+    -webkit-box-shadow: 3px 2px 26px 3px var(--box-shadow-bold);
+    -moz-box-shadow: 3px 2px 26px 3px var(--box-shadow-bold);
     border-bottom: 1px solid var(--border);
     position: sticky;
     top: 0;

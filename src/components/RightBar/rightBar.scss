@@ -30,9 +30,9 @@
             background-color: var(--bg);
             border-radius: 4px;
             padding: 8px 0;
-            box-shadow: 1px 4px 37px 2px rgba(0, 0, 0, 0.05);
-            -webkit-box-shadow: 1px 4px 37px 2px rgba(0, 0, 0, 0.05);
-            -moz-box-shadow: 1px 4px 37px 2px rgba(0, 0, 0, 0.05);
+            box-shadow: 1px 4px 37px 2px var(--box-shadow-soft);
+            -webkit-box-shadow: 1px 4px 37px 2px var(--box-shadow-soft);
+            -moz-box-shadow: 1px 4px 37px 2px var(--box-shadow-soft);
 
             .title {
                 color: var(--textColorSoft);

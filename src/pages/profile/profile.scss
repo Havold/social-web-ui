@@ -2,6 +2,9 @@
 
 .profile {
     background-color: var(--bgSoft);
+    min-height: 100vh;
+    position: relative;
+
     .images {
         width: 100%;
         height: 300px;
