@@ -12,16 +12,21 @@ import {
 } from '@mui/icons-material';
 import './profile.scss';
 import Posts from './../../components/Posts/Posts';
-import { useQuery } from '@tanstack/react-query';
+import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import { makeRequest } from '../../axios';
 import { useLocation } from 'react-router-dom';
 
 const Profile = () => {
     const { currentUser } = useContext(AuthContext);
-    const userId = useLocation().pathname.split('/')[2];
+    const userId = parseInt(useLocation().pathname.split('/')[2]);
+    const queryClient = useQueryClient();
 
-    const { isPending, error, data } = useQuery({
-        queryKey: ['users'],
+    const {
+        isPending: profileIsPending,
+        error: profileError,
+        data: profileData,
+    } = useQuery({
+        queryKey: ['profile'],
         queryFn: () => {
             return makeRequest.get('/users/' + userId).then((res) => {
                 return res.data;
@@ -29,17 +34,46 @@ const Profile = () => {
         },
     });
 
+    const {
+        isPending: relationshipIsPending,
+        error: relationshipError,
+        data: relationshipData,
+    } = useQuery({
+        queryKey: ['relationship'],
+        queryFn: () => {
+            return makeRequest.get('/relationships').then((res) => {
+                return res.data;
+            });
+        },
+    });
+
+    const relationshipMutation = useMutation({
+        mutationFn: (followed) => {
+            if (followed) {
+                return makeRequest.delete('/relationships?userId=' + userId);
+            }
+            return makeRequest.post('/relationships?userId=' + userId);
+        },
+        onSuccess: () => {
+            queryClient.invalidateQueries({ queryKey: ['relationship'] });
+        },
+    });
+
+    const handleFollow = () => {
+        relationshipMutation.mutate(relationshipData.includes(userId));
+    };
+
     return (
         <div className="profile">
-            {error ? (
+            {profileError ? (
                 'Something went wrong! '
-            ) : isPending ? (
+            ) : profileIsPending ? (
                 'Loading...'
             ) : (
                 <>
                     <div className="images">
-                        <img src={data.coverPic} alt="cover" className="cover" />
-                        <img src={data.profilePic} alt="avatar" className="avatar" />
+                        <img src={profileData.coverPic} alt="cover" className="cover" />
+                        <img src={profileData.profilePic} alt="avatar" className="avatar" />
                     </div>
                     <div className="profileContainer">
                         <div className="uInfo">
@@ -58,18 +92,30 @@ const Profile = () => {
                                 </a>
                             </div>
                             <div className="center">
-                                <span className="name">{data.name}</span>
+                                <span className="name">{profileData.name}</span>
                                 <div className="contact">
                                     <div className="item">
                                         <LocationOnRounded fontSize="medium" />
-                                        <span>{data.city}</span>
+                                        <span>{profileData.city}</span>
                                     </div>
                                     <div className="item">
                                         <PublicRounded fontSize="medium" />
-                                        <span>{data.website}</span>
+                                        <span>{profileData.website}</span>
                                     </div>
                                 </div>
-                                {data.id === currentUser.id ? <button>Update</button> : <button>Follow</button>}
+                                {profileData.id === currentUser.id ? (
+                                    <button>Update</button>
+                                ) : (
+                                    <button onClick={handleFollow}>
+                                        {relationshipError
+                                            ? 'Error'
+                                            : relationshipIsPending
+                                            ? 'Loading...'
+                                            : relationshipData.includes(userId)
+                                            ? 'Following'
+                                            : 'Follow'}
+                                    </button>
+                                )}
                             </div>
                             <div className="right">
                                 <MailRounded fontSize="large" />
