@@ -1,16 +1,22 @@
 import { Link, useNavigate } from 'react-router-dom';
 import './login.scss';
-import { useContext, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../../context/authContext';
 
 const Login = () => {
-    const { login } = useContext(AuthContext);
+    const { login, hasAccessToken } = useContext(AuthContext);
     const navigate = useNavigate();
     const [inputs, setInputs] = useState({
         username: '',
         password: '',
     });
     const [err, setErr] = useState(null);
+
+    useEffect(() => {
+        if (hasAccessToken) {
+            navigate('/');
+        }
+    }, [hasAccessToken, navigate]);
 
     const handleLogin = async () => {
         try {

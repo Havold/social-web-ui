@@ -14,13 +14,13 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import UpdateModal from './components/UpdateModal/UpdateModal';
 
 function App() {
-    const { currentUser } = useContext(AuthContext);
+    const { hasAccessToken } = useContext(AuthContext);
     const { darkMode } = useContext(DarkModeContext);
     const queryClient = new QueryClient();
     const [showUpdateModal, setShowUpdateModal] = useState(false);
 
     const ProtectedRoute = ({ children }) => {
-        if (!currentUser) {
+        if (!hasAccessToken) {
             return <Navigate to="/login" />;
         }
 
