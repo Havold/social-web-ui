@@ -20,7 +20,8 @@
             display: flex;
             flex-direction: column;
             gap: 30px;
-            background: linear-gradient(rgba(39,11,96,0.5), rgba(39,11,96,0.2)), url(https://i.pinimg.com/564x/db/ad/cf/dbadcfe307c04c92a67049ab945d248b.jpg);
+            background: linear-gradient(rgba(39, 11, 96, 0.5), rgba(39, 11, 96, 0.2)),
+                url(https://i.pinimg.com/564x/db/ad/cf/dbadcfe307c04c92a67049ab945d248b.jpg);
             background-size: cover;
             padding: 50px;
 
@@ -38,7 +39,7 @@
             }
 
             button {
-                width: 50%;
+                width: 120px;
                 padding: 10px 12px;
                 font-size: 1.2rem;
                 font-weight: bold;
