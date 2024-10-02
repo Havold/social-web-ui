@@ -72,7 +72,11 @@ const Profile = ({ showUpdateModal, setShowUpdateModal }) => {
             ) : (
                 <>
                     <div className="images">
-                        <img src={profileData.coverPic} alt="cover" className="cover" />
+                        {profileData.coverPic ? (
+                            <img src={profileData.coverPic} alt="cover" className="cover" />
+                        ) : (
+                            <div style={{ backgroundColor: 'var(--bg)' }} alt="cover" className="cover" />
+                        )}
                         <img src={profileData.profilePic} alt="avatar" className="avatar" />
                     </div>
                     <div className="profileContainer">
