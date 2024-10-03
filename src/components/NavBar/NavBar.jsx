@@ -8,13 +8,15 @@ import {
 } from '@mui/icons-material';
 import { Link } from 'react-router-dom';
 import Search from '../Search/Search';
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { AuthContext } from '../../context/authContext';
 import { DarkModeContext } from '../../context/darkModeContext';
+import DropDownMenu from '../DropDownMenu/DropDownMenu';
 
 const NavBar = () => {
     const { currentUser } = useContext(AuthContext);
     const { darkMode, toggle } = useContext(DarkModeContext);
+    const [showMenu, setShowMenu] = useState(false);
     return (
         <div className="navBar">
             <div className="left">
@@ -32,12 +34,12 @@ const NavBar = () => {
             <div className="right">
                 <MailOutlineOutlined className="icon" />
                 <NotificationsNoneOutlined className="icon" />
-                <Link to={`/profile/${currentUser.id}`}>
+                <div className="userContainer" onClick={() => setShowMenu(!showMenu)}>
                     <div className="user">
                         <img className="avatar" src={currentUser.profilePic} alt="avatar" />
-                        <span>{currentUser.name}</span>
                     </div>
-                </Link>
+                    {showMenu ? <DropDownMenu /> : <></>}
+                </div>
             </div>
         </div>
     );

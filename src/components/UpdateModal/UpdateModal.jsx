@@ -146,7 +146,15 @@ const UpdateModal = ({ showUpdateModal, setShowUpdateModal }) => {
                             />
                             <label htmlFor="uploadCoverPic">
                                 <span>Cover picture</span>
-                                <img src={coverPic.preview} alt="coverPic" />
+                                {coverPic.preview ? (
+                                    <img src={coverPic.preview} alt="coverPic" />
+                                ) : (
+                                    <div
+                                        style={{ backgroundColor: 'var(--bg)', height: '100px' }}
+                                        alt="cover"
+                                        className="cover"
+                                    />
+                                )}
                             </label>
                         </div>
                     </div>
