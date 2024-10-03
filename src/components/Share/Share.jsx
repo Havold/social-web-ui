@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from 'react';
+import { useContext, useEffect, useRef, useState } from 'react';
 import './share.scss';
 import { AuthContext } from '../../context/authContext';
 import { InsertPhotoRounded, AddLocationRounded, LoyaltyRounded, CloseRounded } from '@mui/icons-material';
@@ -11,6 +11,7 @@ const Share = () => {
     const [file, setFile] = useState(null);
     const [desc, setDesc] = useState('');
     const queryClient = useQueryClient();
+    const inputFileRef = useRef();
 
     const upload = async () => {
         // tạo formData
@@ -38,6 +39,9 @@ const Share = () => {
         mutation.mutate({ desc, img: imgUrl });
         setDesc('');
         setFile(null);
+        if (inputFileRef.current) {
+            inputFileRef.current.value = '';
+        }
     };
 
     const handleChangeFile = (e) => {
@@ -70,14 +74,22 @@ const Share = () => {
                 {file && (
                     <div className="imgUploadContainer">
                         <img className="imgUpload" src={file.preview} alt="img_upload" />
-                        <CloseRounded className="closeIcon" onClick={() => setFile(null)} />
+                        <CloseRounded
+                            className="closeIcon"
+                            onClick={() => {
+                                if (inputFileRef.current) {
+                                    inputFileRef.current.value = '';
+                                }
+                                setFile(null);
+                            }}
+                        />
                     </div>
                 )}
             </div>
             <div className="bottom">
                 <div className="left">
                     <div className="item">
-                        <input type="file" id="uploadFile" onChange={handleChangeFile} />
+                        <input ref={inputFileRef} type="file" id="uploadFile" onChange={handleChangeFile} />
                         <label htmlFor="uploadFile">
                             <InsertPhotoRounded className="icon" />
                             <span>Add Image</span>

@@ -1,4 +1,4 @@
-import { useContext, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import './updateModal.scss';
 import { AuthContext } from '../../context/authContext';
 import { Close } from '@mui/icons-material';
@@ -58,6 +58,22 @@ const UpdateModal = ({ showUpdateModal, setShowUpdateModal }) => {
             } else setProfilePic(file);
         }
     };
+
+    useEffect(() => {
+        return () => {
+            if (profilePic.preview) {
+                URL.revokeObjectURL(profilePic.preview);
+            }
+        };
+    }, [profilePic.preview]);
+
+    useEffect(() => {
+        return () => {
+            if (coverPic.preview) {
+                URL.revokeObjectURL(coverPic.preview);
+            }
+        };
+    }, [coverPic.preview]);
 
     return (
         <div className="updateModal">
