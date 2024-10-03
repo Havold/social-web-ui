@@ -17,7 +17,7 @@ const Share = () => {
         const formData = new FormData();
         formData.append('file', file);
         const res = await makeRequest.post('/upload', formData);
-        return res.data;
+        return '/upload/' + res.data;
     };
 
     const mutation = useMutation({
@@ -55,8 +55,6 @@ const Share = () => {
             }
         };
     }, [file]);
-
-    console.log(file);
 
     return (
         <div className="share">
