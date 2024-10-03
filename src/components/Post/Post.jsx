@@ -21,9 +21,20 @@ const Post = ({ post }) => {
     const [showMenu, setShowMenu] = useState(false);
     const queryClient = useQueryClient();
     const { currentUser } = useContext(AuthContext);
+    const mutationDelete = useMutation({
+        mutationFn: (postId) => {
+            return makeRequest.delete('/posts/' + postId);
+        },
+        onSuccess: () => {
+            queryClient.invalidateQueries({ queryKey: ['posts'] });
+        },
+    });
     const menuData = [
         {
             id: 1,
+            onClick: () => {
+                mutationDelete.mutate(post.id);
+            },
             icon: <DeleteOutlineRounded style={{ fontSize: '20px' }} className="icon" />,
             content: 'Delete',
         },
