@@ -1,21 +1,44 @@
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import './dropDownMenu.scss';
-import { useContext } from 'react';
-import { AuthContext } from '../../context/authContext';
 import { LogoutRounded, Person } from '@mui/icons-material';
-import { makeRequest } from '../../axios';
 
-const DropDownMenu = () => {
-    const { currentUser, setHasAccessToken } = useContext(AuthContext);
-    const navigate = useNavigate();
-    const handleLogOut = async () => {
-        await makeRequest.post('/auth/logout');
-        setHasAccessToken(false);
-        navigate('/login');
-    };
+const DropDownMenu = ({ size = 'medium', data, top = 50 }) => {
+    let width;
+    switch (size) {
+        case 'large':
+            width = 250;
+            break;
+        case 'small':
+            width = 150;
+            break;
+        default:
+            width = 200;
+            break;
+    }
     return (
-        <div className="dropDownMenu">
+        <div style={{ width: `${width}px`, top: `${top}px` }} className="dropDownMenu">
             <ul>
+                {data.map((item) => {
+                    if (item.href) {
+                        return (
+                            <Link key={item.id} to={item.href}>
+                                <li>
+                                    {item.icon}
+                                    <span>{item.content}</span>
+                                </li>
+                            </Link>
+                        );
+                    }
+
+                    return (
+                        <li key={item.id} onClick={item.onClick}>
+                            {item.icon}
+                            <span>{item.content}</span>
+                        </li>
+                    );
+                })}
+            </ul>
+            {/* <ul>
                 <Link to={`/profile/${currentUser.id}`}>
                     <li>
                         <Person className="icon" />
@@ -26,7 +49,7 @@ const DropDownMenu = () => {
                     <LogoutRounded className="icon" />
                     <span>Log out</span>
                 </li>
-            </ul>
+            </ul> */}
         </div>
     );
 };

@@ -1,5 +1,6 @@
 import {
     CommentRounded,
+    DeleteOutlineRounded,
     FavoriteBorderRounded,
     FavoriteRounded,
     MoreVertRounded,
@@ -13,11 +14,20 @@ import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import { makeRequest } from '../../axios';
 import { AuthContext } from '../../context/authContext';
 import { Link } from 'react-router-dom';
+import DropDownMenu from '../DropDownMenu/DropDownMenu';
 
 const Post = ({ post }) => {
     const [commentsOpen, setCommentsOpen] = useState(false);
+    const [showMenu, setShowMenu] = useState(false);
     const queryClient = useQueryClient();
     const { currentUser } = useContext(AuthContext);
+    const menuData = [
+        {
+            id: 1,
+            icon: <DeleteOutlineRounded style={{ fontSize: '20px' }} className="icon" />,
+            content: 'Delete',
+        },
+    ];
 
     const {
         isPending: isPendingComments,
@@ -73,8 +83,9 @@ const Post = ({ post }) => {
                         </div>
                     </div>
                 </Link>
-                <div className="right">
-                    <MoreVertRounded />
+                <div style={{ position: 'relative' }} className="right">
+                    <MoreVertRounded onClick={() => setShowMenu(!showMenu)} />
+                    {showMenu ? <DropDownMenu size="small" top={24} data={menuData} /> : <></>}
                 </div>
             </div>
             <div className="content">
