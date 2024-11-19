@@ -10,7 +10,7 @@ __METAN__ is a social web application inspired by Instagram, providing a platfor
 - **User Profile::** Personalize user profiles with avatars and update personal information.
 - **Feed Page:** Displays a feed of posts from users that the current user follows.
 
-## 🌟 Technologies Used
+## 💻 Technologies Used
 ### ✔️ Front-end
 - **ReactJS**: Front-end framework for building user interfaces.
 - **React Router**: For managing navigation between pages.
