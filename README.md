@@ -76,10 +76,22 @@ Before running the application, ensure you have the following installed:
 3. Create a new post, like, and comment on other users' posts.
 4. Follow other users to see their posts in your feed.
 
-## Screenshots
+## 🖼️ Screenshots
 1. Login Page
-2. Home Page
-3. User Profile
+![Login Page](./public/images/login_page.jpg)
+
+2. Home Page (Light Mode)
+![Home Page Light Mode](./public/images/home_page.jpg)
+
+3. Home Page (Dark Mode)
+![Home Page Dark Mode](./public/images/home_page_dark.jpg)
+
+4. User Profile (Light Mode)
+![Home Page Dark Mode](./public/images/user_profile.jpg)
+
+5. User Profile (Dark Mode)
+![Home Page Dark Mode](./public/images/user_profile_dark.jpg)
+
 ## ⚠️ Important Notice
 - This project has only completed the basic functions mentioned above, functions such as stories, user suggestions will be developed in the future.
 - This project needs a Back-end, I suggest you check out my BE project here: https://github.com/Havold/social-web-backend
