@@ -1,70 +1,86 @@
-# Getting Started with Create React App
+# 📷 METAN - Social Web Application
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+__METAN__ is a social web application inspired by Instagram, providing a platform for users to share photos, interact with posts, and connect with others. The application allows users to create posts, like, comment, and follow each other, enhancing the social experience.
 
-## Available Scripts
+## 🌟 Features
+- **User Authentication:** Secure sign-up and login using JWT-based authentication.
+- **Post Creation:** Users can create posts with captions and upload images.
+- **Like & Comment:** Users can like posts and leave comments, fostering engagement.
+- **Follow System::** Users can follow/unfollow each other to keep up with new posts.
+- **User Profile::** Personalize user profiles with avatars and update personal information.
+- **Feed Page:** Displays a feed of posts from users that the current user follows.
 
-In the project directory, you can run:
+## 🌟 Technologies Used
+### ✔️ Front-end
+- **ReactJS**: Front-end framework for building user interfaces.
+- **React Router**: For managing navigation between pages.
+- **@tanstack/react-query**: For managing server state and data fetching.
+- **SCSS**: For styling the application.
 
-### `npm start`
+### ✔️ Back-end
+- **Node.js:** JavaScript runtime for building scalable server-side applications.
+- **Express:** A web framework for Node.js for building APIs.
+- **JWT (JSON Web Token):** For secure user authentication and session management.
+- **MySQL:** A relational database for storing user, post, and interaction data, managed via MySQL Workbench.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## 🛠️ System Requirements
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Before running the application, ensure you have the following installed:
+- Node.js 20.17.0 __(Recommend)__
+- MySQL installed.
+- Git installed.
+- MySQL Workbench for database management.
 
-### `npm test`
+## 🚀 Getting Started
+### ✔️ Backend Setup
+1. Clone the backend repository:
+    ```
+    git clone https://github.com/Havold/social-web-backend.git
+    cd social-web-backend
+    ```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+2. Install the dependencies:
+    ```
+    npm install
+    ```
 
-### `npm run build`
+3. Set up your `.env` file with the following environment variables:
+    ```
+    PORT = 8080
+    DATABASE_HOST = your_database_host_name
+    DATABASE_PWD = your_database_password
+    DATABASE = your_database_name
+    ```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+4. Run the backend server:
+    ```
+    npm start
+    ```
+⚠️ **Note:** These are just the basic settings. For more details on creating a database, please check out my BE project: https://github.com/Havold/social-web-backend
+### ✔️ Frontend Setup
+1. Clone the frontend repository:
+2. Install dependencies:
+   ```
+   npm install
+   ```
+4. Run the frontend development server:
+    ```
+    npm start
+    ```
+## ⚡ Usage
+1. Open your browser and navigate to:
+    ```
+    http://localhost:3000
+    ```
+2. Register a new account or login with an existing account.
+3. Create a new post, like, and comment on other users' posts.
+4. Follow other users to see their posts in your feed.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## Screenshots
+1. Login Page
+2. Home Page
+3. User Profile
+## ⚠️ Important Notice
+- This project has only completed the basic functions mentioned above, functions such as stories, user suggestions will be developed in the future.
+- This project needs a Back-end, I suggest you check out my BE project here: https://github.com/Havold/social-web-backend
+----------------------------------------------------------------------------------------
