@@ -56,10 +56,14 @@ Before running the application, ensure you have the following installed:
     ```
     npm start
     ```
+⚠️ **Note:** These are just the basic settings. For more details on creating a database, please check out my BE project: https://github.com/Havold/social-web-backend
 ### ✔️ Frontend Setup
 1. Clone the frontend repository:
 2. Install dependencies:
-3. Run the frontend development server:
+   ```
+   npm install
+   ```
+4. Run the frontend development server:
     ```
     npm start
     ```
@@ -72,6 +76,10 @@ Before running the application, ensure you have the following installed:
 3. Create a new post, like, and comment on other users' posts.
 4. Follow other users to see their posts in your feed.
 
+## Screenshots
+1. Login Page
+2. Home Page
+3. User Profile
 ## ⚠️ Important Notice
 - This project has only completed the basic functions mentioned above, functions such as stories, user suggestions will be developed in the future.
 - This project needs a Back-end, I suggest you check out my BE project here: https://github.com/Havold/social-web-backend
