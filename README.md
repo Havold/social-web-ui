@@ -77,19 +77,19 @@ Before running the application, ensure you have the following installed:
 4. Follow other users to see their posts in your feed.
 
 ## 🖼️ Screenshots
-1. Login Page
+__1. Login Page__
 ![Login Page](./public/images/login_page.jpg)
 
-2. Home Page (Light Mode)
+__2. Home Page (Light Mode)__
 ![Home Page Light Mode](./public/images/home_page.jpg)
 
-3. Home Page (Dark Mode)
+__3. Home Page (Dark Mode)__
 ![Home Page Dark Mode](./public/images/home_page_dark.jpg)
 
-4. User Profile (Light Mode)
+__4. User Profile (Light Mode)__
 ![Home Page Dark Mode](./public/images/user_profile.jpg)
 
-5. User Profile (Dark Mode)
+__5. User Profile (Dark Mode)__
 ![Home Page Dark Mode](./public/images/user_profile_dark.jpg)
 
 ## ⚠️ Important Notice
